@@ -1,5 +1,5 @@
 #Battleship Game
-#Extra Credit
+#Extra Credit take 1
 
 from random import randint
 
