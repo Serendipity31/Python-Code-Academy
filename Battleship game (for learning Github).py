@@ -2,6 +2,25 @@
 
 from random import randint
 
+#function allows users to loop through the programme as many times as they want
+def again():
+    play_again = raw_input("Do you want to play again?").lower()
+    if play_again == "n":
+        print "OK. Goodbye"
+    elif play_again == "y":
+        print "OK. Let's play again."
+        play()
+    else:
+        print "Error. Please put Y for yes and N for no."
+        play_agagin = ""
+        play_again = raw_input("Do you want to play again?").lower()
+        if play_again == "n":
+            print "OK. Goodbye"
+        elif play_again == "y":
+            print "OK. Let's play again."
+            play()
+
+
 #the function play has the game actions
 def play():
 	board = []
@@ -73,6 +92,50 @@ def play():
 #Calls the function play to run the game
 play()
 
-play_again = raw_input("Do you want to play again?")
-if play_again == "Y":
-    print "OK"
+'''A note on the again() function. 
+
+I tried getting this option of playing again to work in several ways. 
+
+All of them involved moving all of the 'action' part of the game into a function, 
+so that I could then call that function repeatedly.
+
+The first way was just using an if/else statement that was called after play()
+finished. That worked to loop it through once if the user typed 'y' in response to the question posed. 
+It would call play() for the second time, and then that was it. The reason is that python isn't actually 
+reading to the top of the page again. It executed the contents of play(), and that didn't have anything to 
+do with the question to play again or not, so it stopped. 
+
+The second way I tried was with a while loop that had if/else statements within it. It looked like this:
+
+while True:
+	play_again = raw_input("Do you want to play again?").lower()
+    if play_again == "n":
+        print "OK. Goodbye"
+    elif play_again == "y":
+        print "OK. Let's play again."
+        play()
+
+The problem here was that this while loop was only being called the once, and so play_again was 
+only being requested once and only set once. That means that it was set within that while loop, and subsequent 
+attempts to combine this with over-writing the value of play_again elsewhere in the programme
+didn't work. If I hit 'y' first, then the game would go on indefinitely with no break. If it hit 'n' the game
+ended. 
+
+The third way I tried was to ask for the raw_input within play(), but then to try and call on the
+variable play_again outside of the play() function. That turned play_again into a local variable, 
+so that didn't work.
+
+Finally, I realized that each time play() was executed, it needed to call a function that asked
+whether the user wanted to play again. And then, that function in turn had to call play() when 
+the user answered with a 'Y'. Furthermore, this again() function had to be called for each option
+in the else statement above at the point that all 4 turns were over, so that no matter what choices 
+were made, the user could play again.
+
+Key lesson: even though I think of looping through the script as starting at the top of the page and
+working my way down, Python does not. The functions are discrete pieces of code that are only shown
+vertically on the page because that is the only way we can type them....If there is nothing in a function
+pointing to another set of commands, those commands won't get executed repeatedly just because they are beneath		
+other commands on the page.
+
+Note that it has to be above the play() function so it is defined when is called.
+'''
