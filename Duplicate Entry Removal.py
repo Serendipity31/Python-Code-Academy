@@ -23,7 +23,7 @@ def remove_duplicates(x):
                 unique.append(new[i])
         # if the number in question is the last number in the list (i.e. if i == len(new) - 1)
 		# then append that number to the unique list, since it is by definition unique at this point
-		else: i == len(new) - 1:
+		else: 
             unique.append(new[i])
                     
     # Code academy answer requires simply returning the new list
