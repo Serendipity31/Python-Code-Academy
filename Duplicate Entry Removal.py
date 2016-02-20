@@ -58,4 +58,24 @@ def remove_duplicates(x):
     return "the duplicate numbers are %s, and the unique numbers are %s" % (dups, unique)
                     
 print remove_duplicates(string)
-            
+
+
+#For some reason the CodeAcademy sight provoked errors with the commented version. Here is the uncommonted version.
+#Non-Interactive
+def remove_duplicates(x):
+    new = list(x)
+    new.sort()
+    print new
+    dups = []
+    unique = []
+    for i in range(0, len(new)):
+        if i < (len(new) - 1):
+            if new[i] == new[i+1]:
+                dups.append(new[i])
+            elif new[i] != new[i+1]:
+                unique.append(new[i])
+        else: 
+            unique.append(new[i])
+    return unique
+	                       
+print remove_duplicates([5, 4, 6, 2, 1, 1, 1, 2])
