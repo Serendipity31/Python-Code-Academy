@@ -16,3 +16,11 @@ class Triangle(object):
 my_triangle = Triangle(90, 30, 60)
 print my_triangle.number_of_sides
 print my_triangle.check_angles()
+
+class Equilateral(Triangle):
+    angle = 60
+    
+    def __init__(self):
+        self.angle1 = self.angle
+        self.angle2 = self.angle
+        self.angle3 = self.angle
