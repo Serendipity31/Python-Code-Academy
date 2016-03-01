@@ -31,5 +31,11 @@ class ElectricCar(Car):
         self.color = color
         self.mpg   = mpg
         self.battery_type = battery_type
-
+	
+	def drive_car(self):
+        self.condition = "like new"
+ 
 my_car2 = ElectricCar("DeLorean", "silver", 88, "molten salt")
+print my_car2.condition
+my_car2.drive_car()
+print my_car2.condition
