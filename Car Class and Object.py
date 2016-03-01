@@ -10,10 +10,17 @@ class Car(object):
 		#Note that have to use self within the method display_car so that it knows to what the method refers
 		return "This is a %s %s with %s MPG." % (self.color, self.model, str(self.mpg))
 		#Note that here have to use self. to call the member variables, even within the class
+	
+	def drive_car(self):
+        self.condition = "used"
 		
 my_car = Car("DeLorean", "silver", 88)
 #print my_car.condition
 #print my_car.model
 #print my_car.color
 #print my_car.mpg
-print my_car.display_car()
+#print my_car.display_car()
+
+print my_car.condition
+my_car.drive_car()
+print my_car.condition
